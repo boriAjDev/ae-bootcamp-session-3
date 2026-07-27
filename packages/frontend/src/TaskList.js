@@ -6,6 +6,14 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import EventIcon from '@mui/icons-material/Event';
 
+// Priority badge colors: red for P1, orange for P2, gray for P3
+const PRIORITY_COLORS = {
+  P1: '#f44336',
+  P2: '#ff9800',
+  P3: '#9e9e9e',
+};
+const DEFAULT_PRIORITY = 'P3';
+
 function TaskList({ onEdit }) {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -220,6 +228,18 @@ function TaskList({ onEdit }) {
                   }}
                 />
               )}
+              <Chip
+                label={task.priority || DEFAULT_PRIORITY}
+                size="small"
+                data-testid="priority-badge"
+                sx={{
+                  height: 20,
+                  fontSize: '0.7rem',
+                  fontWeight: 600,
+                  background: PRIORITY_COLORS[task.priority] || PRIORITY_COLORS[DEFAULT_PRIORITY],
+                  color: 'white',
+                }}
+              />
               <Box 
                 sx={{ 
                   display: 'flex', 
