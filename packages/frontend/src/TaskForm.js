@@ -173,7 +173,13 @@ function TaskForm({ onSave, initialTask }) {
           }}
         >
           {PRIORITY_OPTIONS.map(option => (
-            <MenuItem key={option} value={option}>{option}</MenuItem>
+            <MenuItem
+              key={option}
+              value={option}
+              className={option === priority ? 'priority-selected' : 'priority-unselected'}
+            >
+              {option}
+            </MenuItem>
           ))}
         </TextField>
         {error && <Typography color="error" sx={{ fontWeight: 500, fontSize: '0.875rem' }}>{error}</Typography>}
